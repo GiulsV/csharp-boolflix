@@ -10,6 +10,8 @@ var connectionString = builder.Configuration.GetConnectionString("BoolflixDbCont
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
