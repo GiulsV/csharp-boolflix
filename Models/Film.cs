@@ -1,7 +1,7 @@
 ﻿namespace csharp_boolflix.Models
 {
-    public class Film : MediaContent
+    public class Film : Contenuto
     {
-        public MediaInfo MediaInfo { get; set; }
+        public int Durata { get; set; }
     }
 }
