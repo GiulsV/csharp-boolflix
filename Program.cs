@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using csharp_boolflix.Data;
+using csharp_boolflix.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ var connectionString = builder.Configuration.GetConnectionString("BoolflixDbCont
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
     .AddRazorRuntimeCompilation();
+
+builder.Services.AddScoped<IFilmRepository, DbFilmRepository>();
+builder.Services.AddScoped<ISerieRepository, DbSerieRepository>();
 
 var app = builder.Build();
 
