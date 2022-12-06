@@ -8,15 +8,20 @@ namespace csharp_boolflix.Data
     public class BoolflixDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Film> Films { get; set; }
-        public DbSet<TVSeries> TvSeries { get; set; }
-        public DbSet<Episode> Episodes { get; set; }
-        public DbSet<MediaInfo> MediaInfos { get; set; }
-        public DbSet<Actor> Actors { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<Feature> Features { get; set; }
+        public DbSet<Serie> Serie { get; set; }
+        public DbSet<Stagione> Stagioni { get; set; }
+        public DbSet<Episodio> Episodi { get; set; }
+        public DbSet<Caratteristica> Caratteristiche { get; set; }
+        public DbSet<Genere> Generi { get; set; }
+        public DbSet<Attore> Attori { get; set; }
+        public DbSet<Regia> Registi { get; set; }
 
         public BoolflixDbContext(DbContextOptions<BoolflixDbContext> options)
         : base(options)
+        {
+        }
+
+        public BoolflixDbContext()
         {
         }
 
