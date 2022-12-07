@@ -57,5 +57,11 @@ namespace csharp_boolflix.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public List<Serie> GetGenereSerie(string genere)
+        {
+            Genere item = db.Generi.Where(g => g.Nome == genere).FirstOrDefault();
+            return db.Serie.Where(f => f.Generi.Contains(item)).ToList();
+        }
     }
 }

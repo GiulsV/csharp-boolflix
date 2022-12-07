@@ -9,8 +9,11 @@
         public string Trama { get; set; }
         public string Copertina { get; set; }
         public string Risoluzione { get; set; }
+        public int CaratteristicheId { get; set; }
         public List<Caratteristica>? Caratteristiche { get; set; }
+        public int GeneriId { get; set; }
         public List<Genere>? Generi { get; set; }
+        public int AttoriId { get; set; }
         public List<Attore>? Attori { get; set; }
         public int RegiaId { get; set; }
         public Regia? Regia { get; set; }

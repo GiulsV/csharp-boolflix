@@ -23,5 +23,12 @@ namespace csharp_boolflix.Controllers.Api
             List<Film> films = filmRepository.GetGenereFilm(genere);
             return Ok(films);
         }
+
+        [HttpGet]
+        public ActionResult GetSerie(string genere)
+        {
+            List<Serie> series = serieRepository.GetGenereSerie(genere);
+            return Ok(series);
+        }
     }
 }

@@ -56,54 +56,56 @@
         </div>
         <div class="mb-3">
             <strong>Caratteristiche:</strong>
-            <br />
-            @foreach (Caratteristica item in Model.Caratteristiche)
-            {
-                @if (Model.AreCheckedCaratteristiche.Contains(item.Id))
+            <select asp-for="Serie.CaratteristicheId" rows="10" class="d-block w-100">
+                @foreach (Caratteristica caratteristica in Model.Caratteristiche)
                 {
-                    <input name="AreCheckedCaratteristiche" type="checkbox" value="@item.Id" checked />
+                    @if (Model.Serie.CaratteristicheId == caratteristica.Id)
+                    {
+                        <option value="@caratteristica.Id" selected>@caratteristica.Nome</option>
+                    }
+                    else
+                    {
+                        <option value="@caratteristica.Id">@caratteristica.Nome</option>
+                    }
                 }
-                else
-                {
-                    <input name="AreCheckedCaratteristiche" type="checkbox" value="@item.Id" />
-                }
-                <span>@item.Nome</span>
-                <br />
-            }
+            </select>
         </div>
         <div class="mb-3">
             <strong>Generi:</strong>
-            <br />
-            @foreach (Genere item in Model.Generi)
-            {
-                @if (Model.AreCheckedGeneri.Contains(item.Id))
+            <select asp-for="Serie.GeneriId" rows="10" class="d-block w-100">
+                @foreach (Genere genere in Model.Generi)
                 {
-                    <input name="AreCheckedGeneri" type="checkbox" value="@item.Id" checked />
+                    @if (Model.Serie.GeneriId == genere.Id)
+                    {
+                        <option value="@genere.Id" selected>@genere.Nome</option>
+                    }
+                    else
+                    {
+                        <option value="@genere.Id">@genere.Nome</option>
+                    }
                 }
-                else
-                {
-                    <input name="AreCheckedGeneri" type="checkbox" value="@item.Id" />
-                }
-                <span>@item.Nome</span>
-                <br />
-            }
+            </select>
         </div>
         <div class="mb-3">
             <strong>Attori:</strong>
             <br />
-            @foreach (Attore item in Model.Attori)
-            {
-                @if (Model.AreCheckedAttori.Contains(item.Id))
+            <select asp-for="Serie.AttoriId" rows="10" class="d-block w-100">
+                @foreach (Attore attore in Model.Attori)
                 {
-                    <input name="AreCheckedAttori" type="checkbox" value="@item.Id" checked />
+                    @if (Model.Serie.AttoriId == attore.Id)
+                    {
+                            <option value="@attore.Id" selected>
+                                @attore.Nome @attore.Cognome
+                            </option>
+                    }
+                    else
+                    {
+                        <option value="@attore.Id" selected>
+                            @attore.Nome @attore.Cognome
+                        </option>
+                    }
                 }
-                else
-                {
-                    <input name="AreCheckedAttori" type="checkbox" value="@item.Id" />
-                }
-                <span>@item.Nome</span>
-                <br />
-            }
+            </select>
         </div>
         <div class="text-end">
             <input type="submit" class="btn btn-small btn-info" value="Salva">

@@ -7,27 +7,77 @@
     <h1 class="display-4">Boolflix</h1>
 </div>
 <div class="container">
-    <h3>Film per famiglie</h3>
-    <div class="d-flex justify-content-center flex-wrap js_family_film">
-        <!-- mostra lista film per famiglie -->
-    </div>
-    <h3>Film acclamati critica</h3>
-    <div class="d-flex justify-content-center flex-wrap js_critica_film">
-        <!-- mostra lista film acclamati dalla critica -->
-    </div>
-    <h3>Film tratti dai libri</h3>
-    <div class="d-flex justify-content-center flex-wrap js_book_film">
-        <!-- mostra lista film tratti dai libri -->
-    </div>
+    <h2>Film in catalogo</h2>
+        <h3>Film per famiglie</h3>
+        <div class="d-flex justify-content-center flex-wrap js_family_film">
+            <!-- mostra lista film per famiglie -->
+        </div>
+        <h3>Film acclamati critica</h3>
+        <div class="d-flex justify-content-center flex-wrap js_critica_film">
+            <!-- mostra lista film acclamati dalla critica -->
+        </div>
+        <h3>Film tratti dai libri</h3>
+        <div class="d-flex justify-content-center flex-wrap js_book_film">
+            <!-- mostra lista film tratti dai libri -->
+        </div>
+
+    <h2>Serie in catalogo</h2>
+        <h3>Sitcom</h3>
+        <div class="d-flex justify-content-center flex-wrap js_sitcom_serie">
+            <!-- mostra lista serie -->
+        </div>
+        <h3>Commedie TV</h3>
+        <div class="d-flex justify-content-center flex-wrap js_commediatv_serie">
+            <!-- mostra lista serie -->
+        </div>
+        <h3>Serie TV crime</h3>
+        <div class="d-flex justify-content-center flex-wrap js_tvcrime_serie">
+            <!-- mostra lista serie -->
+        </div>
 </div>
 
 
 @section Scripts{
     <script type="text/javascript">
+        GetSerie("Sitcom", ".js_sitcom_serie");
+        GetSerie("Commedie TV", ".js_commediatv_serie");
+        GetSerie("Serie TV crime", ".js_tvcrime_serie");
+        
+        function GetSerie(genere, container) {
+            axios.get('/api/contenuto/getserie', {
+                params: {
+                    genere: genere,
+                }
+            }).then(res => {
+                DisplaySerie(res.data, container);
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+
+        function DisplaySerie(data, container) {
+            console.log(container);
+            document.querySelector(container).innerHTML = '';
+            data.forEach(serie => {
+                document.querySelector(container).innerHTML +=
+                    `
+                        <div class="card m-2" style="width: 18rem;">
+                            <img src="${serie.copertina}" class="card-img-top" alt="serie">
+                            <div class="card-body">
+                                <h5 class="card-title">${serie.titolo}</h5>
+                                <p class="card-text">Stagioni: ${serie.stagione}</p>
+                                <a class="btn btn-primary" href="@Url.Action("Detail","Home")/${serie.id}">Dettagli</a>
+                            </div>
+                        </div>
+                    `;
+            });
+        }
+    </script>
+    <script type="text/javascript">
         GetFilm("Film per famiglie", ".js_family_film");
         GetFilm("Film acclamati critica", ".js_critica_film");
         GetFilm("Film tratti dai libri", ".js_book_film");
-        
+
         function GetFilm(genere, container) {
             axios.get('/api/contenuto/getfilm', {
                 params: {
@@ -46,15 +96,15 @@
             data.forEach(film => {
                 document.querySelector(container).innerHTML +=
                     `
-                        <div class="card m-2" style="width: 18rem;">
-                            <img src="${film.copertina}" class="card-img-top" alt="film">
-                            <div class="card-body">
-                                <h5 class="card-title">${film.titolo}</h5>
-                                <p class="card-text">${film.durata} minuti</p>
-                                <a class="btn btn-primary" href="@Url.Action("Detail","Home")/${film.id}">Dettagli</a>
-                            </div>
-                        </div>
-                    `;
+                                <div class="card m-2" style="width: 18rem;">
+                                    <img src="${film.copertina}" class="card-img-top" alt="film">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${film.titolo}</h5>
+                                        <p class="card-text">${film.durata} minuti</p>
+                                        <a class="btn btn-primary" href="@Url.Action("Detail","Home")/${film.id}">Dettagli</a>
+                                    </div>
+                                </div>
+                            `;
             });
         }
     </script>

@@ -35,9 +35,6 @@ namespace csharp_boolflix.Controllers
             formFilm.Registi = db.Registi.ToList();
             formFilm.Caratteristiche = db.Caratteristiche.ToList();
             formFilm.Generi = db.Generi.ToList();
-            formFilm.AreCheckedGeneri = new List<int>();
-            formFilm.AreCheckedAttori = new List<int>();
-            formFilm.AreCheckedCaratteristiche = new List<int>();
             return View(formFilm);
         }
         [HttpPost]
