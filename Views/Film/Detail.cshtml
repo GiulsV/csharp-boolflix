@@ -8,9 +8,11 @@
     <h1>Dettaglio Film</h1>
 </div>
 <section class="ms-5">
-    <h2>Titolo: @Model.Titolo</h2>
+    <h2>@Model.Titolo</h2>
     <img src="@Model.Copertina" alt="film">
-    <p>Trama: @Model.Trama</p>
+    <p>Trama: <br />
+       @Model.Trama
+    </p>
     <span>Anno: @Model.Anno</span><br />
     <span>Pegi: @Model.Pegi</span><br />
     <span>Risoluzione: @Model.Risoluzione</span><br />
@@ -39,7 +41,10 @@
         <ul>
             @foreach (Attore item in Model.Attori)
             {
-                <li class="badge btn-info">@item.Nome</li>
+                <li class="badge btn-info">
+                    @item.Nome
+                    @item.Cognome
+                </li>
             }
         </ul>
     </div>

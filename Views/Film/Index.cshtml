@@ -13,8 +13,8 @@
                 <img src="@film.Copertina" class="card-img-top" alt="copertina_film">
                 <div class="card-body">
                     <h5 class="card-title">@film.Titolo</h5>
-                    <p class="card-text">@film.Durata minuti</p>
-                    <p class="card-text">Prezzo: @film.Risoluzione</p>
+                    <p class="card-text">Durata: @film.Durata minuti</p>
+                    <p class="card-text">Risoluzione: @film.Risoluzione</p>
                     <a class="btn btn-primary" asp-area="" asp-controller="Film" asp-action="Detail" asp-route-id="@film.Id">Dettagli</a>
                 </div>
             </div>
