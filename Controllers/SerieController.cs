@@ -63,7 +63,7 @@ namespace csharp_boolflix.Controllers
             Serie serie = serieRepository.GetById(id);
 
             if (serie == null)
-                return View("NotFound", "La pizza cercata non è stata trovata");
+                return View("NotFound", "La serie cercata non è stata trovata");
 
             serieRepository.Delete(serie);
 

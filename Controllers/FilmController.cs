@@ -11,7 +11,7 @@ namespace csharp_boolflix.Controllers
     public class FilmController : Controller
     {
         IFilmRepository filmRepository;
-        BoolflixDbContext db; // da toglire quando ci saranno tutti i repository
+        BoolflixDbContext db;
         public FilmController(IFilmRepository _filmRepository, BoolflixDbContext _db) : base()
         {
             filmRepository = _filmRepository;

@@ -1,0 +1,30 @@
+﻿using csharp_boolflix.Data.Repository;
+using csharp_boolflix.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace csharp_boolflix.Controllers.Api
+{
+    public class HomeController : Controller
+    {
+        [Route("api/[controller]/[action]", Order = 1)]
+        [ApiController]
+        public class ContenutoController : ControllerBase
+        {
+            IFilmRepository filmRepository;
+            ISerieRepository serieRepository;
+
+            public ContenutoController(IFilmRepository _filmRepository, ISerieRepository _serieRepository)
+            {
+                filmRepository = _filmRepository;
+                serieRepository = _serieRepository;
+            }
+
+            [HttpGet]
+            public ActionResult GetFilm(string genere)
+            {
+                List<Film> films = filmRepository.GetGenereFilm(genere);
+                return Ok(films);
+            }
+        }
+    }
+}
